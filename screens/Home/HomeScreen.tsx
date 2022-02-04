@@ -1,4 +1,5 @@
 import React from "react";
+
 import { 
   View, 
   Text, 
@@ -9,6 +10,7 @@ import {
   Image,
   ImageBackground,
 } from "react-native";
+
 import {
   dummyData,
   COLORS,
@@ -18,6 +20,9 @@ import {
   images,
 } from "../../constants";
 
+import { 
+  PriceAlert, 
+} from "../../components";
 
 export default function HomeScreen() {
 
@@ -153,11 +158,17 @@ export default function HomeScreen() {
       </View>
     )
   }
+  function renderAlert() {
+    return(
+      <PriceAlert />
+    )
+  }
 
   return (
     <ScrollView>
       <View style={{ flex:1, paddingBottom: 130}}>
         {renderHeader()}
+        {renderAlert()}
       </View>
     </ScrollView>
   );
