@@ -160,7 +160,7 @@ export default function HomeScreen() {
   }
   function renderAlert() {
     return(
-      <PriceAlert />
+      <PriceAlert customContainerStyle={undefined} />
     )
   }
 

@@ -30,6 +30,7 @@ import LinkingConfiguration from './LinkingConfiguration';
 
 import HomeScreenStack from './HomeScreenStack';
 import SettingsScreenStack from './SettingsScreenStack';
+import { COLORS } from '../constants';
 
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
@@ -65,8 +66,7 @@ function RootNavigator() {
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
 
-
- const stylesNav = StyleSheet.create({
+/*
   shadow: {
     borderRadius: 10,
     position: 'absolute',
@@ -82,6 +82,15 @@ function RootNavigator() {
       width: 0,
       height: 10,
     },
+  },
+
+*/
+
+
+ const stylesNav = StyleSheet.create({
+  shadow: {
+    backgroundColor: "white",
+    height: 75,
   },
 });
 
@@ -120,12 +129,12 @@ function screenOptions(route:any, focused:any) {
         name={iconName}
         size={25}
         style={{
-          color: focused ? '#ffff49':'#b7b7b7',
+          color: focused ? '#000':'#b7b7b7',
           top: -10,
           marginBottom: -3
         }}
       />
-      <Text style={{color:focused ? '#ffff49':'#b7b7b7', fontSize: 11}}>
+      <Text style={{color:focused ? '#000':'#b7b7b7', fontSize: 11}}>
         {textName}
       </Text>
     </View>
@@ -204,8 +213,8 @@ function BottomTabNavigator() {
               name="home"
               size={35}
               style={{
-                color: focused ? '#ffff49':'#b7b7b7',
-                backgroundColor: '#ff1414',
+                color: focused ? COLORS.white:'#b7b7b7',
+                backgroundColor: COLORS.primary,
                 padding: 15,
                 borderRadius: 60,
                 top: -30,
