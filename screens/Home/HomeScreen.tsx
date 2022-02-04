@@ -9,6 +9,7 @@ import {
   FlatList,
   Image,
   ImageBackground,
+  LogBox,
 } from "react-native";
 
 import {
@@ -22,11 +23,17 @@ import {
 
 import { 
   PriceAlert, 
+  TransactionHistory,
 } from "../../components";
 
 export default function HomeScreen() {
 
   const [trending, setTrending] = React.useState(dummyData.trendingCurrencies)
+  const [transactionHistory, setTransactionHistory] = React.useState(dummyData.transactionHistory)
+
+  React.useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
+  },[])
 
   function renderHeader() {
     
@@ -150,7 +157,6 @@ export default function HomeScreen() {
               horizontal
               showsHorizontalScrollIndicator={false}
             >
-
             </FlatList>
           </View>
 
@@ -163,12 +169,57 @@ export default function HomeScreen() {
       <PriceAlert customContainerStyle={undefined} />
     )
   }
+  function renderNotice() {
+    return(
+      <View
+        style={{
+          marginTop: SIZES.padding,
+          marginHorizontal: SIZES.padding,
+          padding: 20,
+          borderRadius: SIZES.radius,
+          backgroundColor: COLORS.secondary,
+          ...styles.shadow
+        }}
+      >
+        <Text style={{color:COLORS.white, ...FONTS.h3}}>Investing Safety</Text>
+        <Text style={{marginTop:SIZES.base, color: COLORS.white, ...FONTS.body4, lineHeight:18, }}>It's very difficult to time an investment,
+          especially when the market is volatile. Learn how to
+          use dollar cost averaging to your advantage.
+        </Text>
+        <TouchableOpacity
+          style={{
+            marginTop: SIZES.base
+          }}
+          onPress={() => console.log("Learn More")}
+        >
+          <Text style={{
+            textDecorationLine: 'underline',
+            color: COLORS.green,
+            ...FONTS.h3
+
+          }}>Learn More</Text>
+        </TouchableOpacity>
+
+      </View>
+    )
+  }
+
+  function renderTransactionHistory() {
+    return(
+      <TransactionHistory
+        customContainerStyle={{...styles.shadow}}
+        history={transactionHistory}
+      />
+    )
+  }
 
   return (
     <ScrollView>
       <View style={{ flex:1, paddingBottom: 130}}>
         {renderHeader()}
         {renderAlert()}
+        {renderNotice()}
+        {renderTransactionHistory()}
       </View>
     </ScrollView>
   );
@@ -192,26 +243,3 @@ const styles = StyleSheet.create({
   },
 
 });
-
-
-
-
-/*
-export default function HomeScreen() {
-    return (
-        <View style={styles.container}>
-          <Text>Home screen</Text>
-        </View>
-      );
-    
-}
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#f9f7f7",
-  },
-});
-
-*/
