@@ -24,7 +24,7 @@ export default function SettingsGuest() {
           title="Ver tu pefíl"
           buttonStyle={styles.btnStyle}
           containerStyle={styles.btnContainer}
-          onPress={() => navigator.navigate("login")}
+          onPress={() => navigator.navigate<any>("login")}
         />
       </View>
     </ScrollView>

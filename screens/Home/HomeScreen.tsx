@@ -25,8 +25,10 @@ import {
   PriceAlert,
   TransactionHistory,
 } from "../../components";
+import { useNavigation } from "@react-navigation/native";
 
 export default function HomeScreen() {
+  const navigator = useNavigation();
 
   const [trending, setTrending] = React.useState(dummyData.trendingCurrencies)
   const [transactionHistory, setTransactionHistory] = React.useState(dummyData.transactionHistory)
@@ -48,6 +50,7 @@ export default function HomeScreen() {
           borderRadius: 10,
           backgroundColor: COLORS.white,
         }}
+        onPress={() => navigator.navigate<any>("cryptodetail", {currency: item})}
       >
         {/* Currency */}
         <View style={{flexDirection: 'row'}}>
