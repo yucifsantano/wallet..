@@ -22,7 +22,7 @@ import {
 } from "../../constants";
 
 import { 
-  PriceAlert, 
+  PriceAlert,
   TransactionHistory,
 } from "../../components";
 
