@@ -11,6 +11,8 @@ import {
     SafeAreaViewBase
 } from 'react-native';
 
+import { VictoryScatter, VictoryLine, VictoryChart, VictoryAxis} from 'victory-native';
+import { VictoryCustomTheme } from '../../styles';
 import { HeaderBar, CurrencyLabel } from '../../components'
 import { dummyData, COLORS, SIZES, FONTS, icons } from '../../constants'
 
@@ -58,6 +60,17 @@ const CryptoDetail = ({ route, navigation }:{ route:any, navigation:any }) => {
                 
 
                 {/* Chart */}
+                <View style={{marginTop: -25}}>
+                    <VictoryChart
+                        theme={VictoryCustomTheme}
+                        height={220}
+                        width={SIZES.width - 40}
+
+                    >
+
+                    </VictoryChart>
+                </View>
+
                 {/* Options */}
                 {/* Dots */}
             </View>
