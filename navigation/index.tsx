@@ -27,9 +27,10 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
-
 import HomeScreenStack from './HomeScreenStack';
 import SettingsScreenStack from './SettingsScreenStack';
+import QRcodeScreenStack from './QRcodeScreenStack';
+
 import { COLORS } from '../constants';
 
 
@@ -66,34 +67,12 @@ function RootNavigator() {
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
 
-/*
-  shadow: {
-    borderRadius: 10,
-    position: 'absolute',
-    bottom: 25,
-    left: 20,
-    right: 20,
-    backgroundColor: '#919191',
-    height: 75,
-    shadowColor: 'white',
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-  },
-
-*/
-
-
  const stylesNav = StyleSheet.create({
   shadow: {
     backgroundColor: "white",
     height: 75,
   },
 });
-
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
@@ -106,7 +85,7 @@ function screenOptions(route:any, focused:any) {
       iconName = 'credit-card';
       textName = 'Credit-card';
       break;
-    case 'TabOneA':
+    case 'QRcode':
       iconName = 'qrcode';
       textName = 'QR code';
       break;
@@ -122,7 +101,6 @@ function screenOptions(route:any, focused:any) {
     default:
       break;
   }
-
   return (
     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
       <FontAwesome 
@@ -198,8 +176,8 @@ function BottomTabNavigator() {
       />
 
       <BottomTab.Screen
-        name="TabOneA"
-        component={TabOneScreen}
+        name="QRcode"
+        component={QRcodeScreenStack}
         options = {{ headerShown: false }}
       />
       
