@@ -2,6 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from "../screens/Home/HomeScreen";
 import CryptoDetail from "../screens/Home/CryptoDetail";
+import Transaction from "../screens/Transaction";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,10 @@ export default function HomeScreenStack() {
             <Stack.Screen
                 name="cryptodetail"
                 component={CryptoDetail}
+            />
+            <Stack.Screen
+                name="transaction"
+                component={Transaction}
             />
         </Stack.Navigator>
     )

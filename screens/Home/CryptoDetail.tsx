@@ -13,10 +13,13 @@ import {
 
 import { VictoryScatter, VictoryLine, VictoryChart, VictoryAxis} from 'victory-native';
 import { VictoryCustomTheme } from '../../styles';
-import { HeaderBar, CurrencyLabel, TextButton } from '../../components'
+import { HeaderBar, CurrencyLabel, TextButton, PriceAlert } from '../../components'
 import { dummyData, COLORS, SIZES, FONTS, icons } from '../../constants'
+import { useNavigation } from "@react-navigation/native";
 
 const CryptoDetail = ({ route, navigation }:{ route:any, navigation:any }) => {
+
+    const navigator = useNavigation();
 
     const scrollX = new Animated.Value(0);
     const numberOfCharts = [1,2,3];
@@ -296,8 +299,26 @@ const CryptoDetail = ({ route, navigation }:{ route:any, navigation:any }) => {
 
                 <TextButton 
                     label='Buy'
-                    onPress={() => navigation.navigate('Transaction', {currency: selectedCurrency})}
+                    onPress={() => navigator.navigate<any>("transaction", {currency: selectedCurrency})}
                 />
+            </View>
+        )
+    }
+
+    function renderAbout() {
+        return (
+            <View
+                style={{
+                    marginTop:SIZES.padding,
+                    marginHorizontal: SIZES.radius,
+                    padding: SIZES.radius,
+                    borderRadius: SIZES.radius,
+                    backgroundColor: COLORS.white,
+                    ...styles.shadow
+                }}
+            >
+                <Text style={{...FONTS.h3}}>About {selectedCurrency?.currency}</Text>
+                <Text style={{marginTop:SIZES.base, ...FONTS.body3}}>{selectedCurrency?.description}</Text>
             </View>
         )
     }
@@ -317,6 +338,12 @@ const CryptoDetail = ({ route, navigation }:{ route:any, navigation:any }) => {
                     {renderChart()}
                     {renderBuy()}
                     {renderAbout()}
+                    <PriceAlert 
+                        customContainerStyle={{
+                            marginTop: SIZES.padding,
+                            marginHorizontal: SIZES.radius
+                        }}
+                    />
                 </View>
             </ScrollView>
         </SafeAreaView>
