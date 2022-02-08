@@ -12,22 +12,17 @@ export default function HomeScreenStack() {
             <Stack.Screen
                 name="homeScreen"
                 component={HomeScreen}
-                options={{
-                    title: 'PRINCIPAL',
-                    headerTitleAlign: 'center',
-                    headerTintColor: '#303030',
-                    headerStyle: {
-                      backgroundColor: '#f9f7f7'
-                    },
-                }}
+                options={{headerShown: false}}
             />
             <Stack.Screen
                 name="cryptodetail"
                 component={CryptoDetail}
+                options={{headerShown: false}}
             />
             <Stack.Screen
                 name="transaction"
                 component={Transaction}
+                options={{headerShown: false}}
             />
         </Stack.Navigator>
     )

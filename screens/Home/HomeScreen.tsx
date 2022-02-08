@@ -45,10 +45,11 @@ export default function HomeScreen() {
           width: 180,
           paddingVertical: SIZES.padding,
           paddingHorizontal: SIZES.padding,
-          marginLeft: index === 0 ? SIZES.padding : 0,
+          marginLeft: index == 0 ? SIZES.padding : 0,
           marginRight: SIZES.radius,
           borderRadius: 10,
           backgroundColor: COLORS.white,
+          ...styles.shadow
         }}
         onPress={() => navigator.navigate<any>("cryptodetail", {currency: item})}
       >
@@ -69,16 +70,14 @@ export default function HomeScreen() {
             <Text style={{...FONTS.h2}}>{item.currency}</Text>
             <Text style={{color:COLORS.gray, ...FONTS.body3}}>{item.code}</Text>
           </View>
+
         </View>
 
         {/* Value */}
-        
         <View style={{marginTop:SIZES.radius}}>
           <Text style={{...FONTS.h2}}>${item.amount}</Text>
           <Text style={{color: item.type === "I" ? COLORS.green : COLORS.red, ...FONTS.h3}}>{item.changes}</Text>
         </View>
-        
-
       </TouchableOpacity>
     )
 
@@ -95,7 +94,7 @@ export default function HomeScreen() {
           resizeMode="cover"
           style={{
             flex:1,
-            alignItems:"center",
+            alignItems:"center"
           }}
         >
           {/* Header Bar */}
@@ -104,7 +103,7 @@ export default function HomeScreen() {
               marginTop:SIZES.padding * 2,
               width:"100%",
               alignItems:"flex-end",
-              paddingHorizontal: SIZES.padding,
+              paddingHorizontal: SIZES.padding
             }}
           >
             <TouchableOpacity
@@ -135,14 +134,13 @@ export default function HomeScreen() {
             <Text style={{ color:COLORS.white, ...FONTS.h3}}>Your Portfolio Balance</Text>
             <Text style={{ marginTop: SIZES.base, color: COLORS.white, ...FONTS.h1 }}>${dummyData.portfolio.balance}</Text>
             <Text style={{ color:COLORS.white, ...FONTS.body5}}>{dummyData.portfolio.changes} Last 24 hours</Text>
-
           </View>
 
           {/* Trending */}
           <View
             style={{
               position:'absolute',
-              bottom:"-30%",
+              bottom:"-30%"
             }}
           >
             <Text
@@ -151,7 +149,9 @@ export default function HomeScreen() {
                 color: COLORS.white,
                 ...FONTS.h2,
               }}
-            >Trending</Text>
+            >
+              Trending
+            </Text>
             <FlatList
               contentContainerStyle={{marginTop: SIZES.base}}
               data={trending}

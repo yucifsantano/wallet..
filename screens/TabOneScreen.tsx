@@ -16,12 +16,18 @@ export default function TabOneScreen({
 }: RootTabScreenProps<"TabOne">) {
   
   return (
+    
     <View style={styles.container}>
-      <Text>Hola aaaaaaaaaaaaa1</Text>
+      <Text>Prueba de Input</Text>
 
-    <TextInput style={{
-      color: COLORS.red
-    }}>Escribe un texto </TextInput>
+      <TextInput 
+        style={{
+          color: COLORS.red,
+          bottom:5,
+          alignItems:'flex-end'
+        }}>
+          Escribe un texto 
+      </TextInput>
 
     </View>
   );
@@ -31,7 +37,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
+    bottom: 45,
   },
   title: {
     fontSize: 20,
