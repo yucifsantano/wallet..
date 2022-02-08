@@ -77,8 +77,8 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function screenOptions(route:any, focused:any) {
-  let iconName = "";
-  let textName = "";
+  let iconName:any = "";
+  let textName:any = "";
 
   switch (route.name) {
     case 'TabOne':

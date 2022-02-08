@@ -31,6 +31,9 @@ export type RootTabParamList = {
   TabThree: undefined;
   TabOneA: undefined;
   TabThreeA: undefined;
+  QRcode: undefined;
+  homescreenStack: undefined;
+  settingsscreenStack: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
